@@ -14,20 +14,24 @@ import java.util.Scanner;
  * program will accept and produce wrong results. 
  * change the code to use enums which avoids String input 
  * then print the status details. 
- * @author srinivsi 
+ * @author smitpatel
  */
 public class Status {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
-    {
-    Scanner in =new Scanner(System.in);
-    System.out.println("Enter the user status code (zero,one,two,three) in string");
-    String code = in.next();
-    StausUser t= new StausUser();
-    t.statusDetail(code); 
-    }
     
+    
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the user status code (ZERO, ONE, TWO, THREE) in uppercase:");
+        try {
+            StatusEnum code = StatusEnum.valueOf(in.next().toUpperCase());
+            StatusUser t = new StatusUser();
+            t.statusDetail(code); 
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid code entered.");
+        }
+    }
 }
